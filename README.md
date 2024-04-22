@@ -33,10 +33,12 @@ module "database_instance" {
   databases = [{
     name = "zamp-pocs"
   }]
+
   users = [{
     name     = "zamp",
     password = "zamp@2057"
   }]
+
   settings = {
     disk_size = "20"
     tier      = "db-f1-micro"
