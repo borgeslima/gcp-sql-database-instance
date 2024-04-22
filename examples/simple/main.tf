@@ -4,8 +4,7 @@ locals {
   region                 = "us-east1"
   database_version       = "POSTGRES_14"
   database_user_name     = "user@user"
-  database_user_password = "$pw=user@2057"
-  root_password          = ""
+  root_password          = "user@user"
   deletion_protection    = false
   databases              = [{
     name = "quarks-labs"
@@ -31,6 +30,7 @@ locals {
 module "database_instance" {
   source              = "../.."
   project             = local.project
+  root_password       = local.root_password
   region              = local.region
   name                = local.name
   database_version    = local.database_version
