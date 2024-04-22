@@ -7,21 +7,29 @@ Terraform module which creates SQL INSTANCE resources on GCP.
 
 ```hcl
 
+
 locals {
   name                   = "quarks-labs"
   project                = "quarks-labs"
   region                 = "us-east1"
-  database_version       = "POSTGRES_14"
-  root_password          = "$pw=user@2057"
-  deletion_protection    = false
-  databases              = [{
+}
+
+module "database_instance" {
+  source              = "ssh::https://github.com/quarks-labs/gcp-sql-database-instance.git"
+  project             = local.project
+  region              = local.region
+  root_password       = "$pw=user@2057"
+  name                = local.name
+  deletion_protection = false
+  database_version    = "POSTGRES_14"
+  databases           =  [{
     name = "quarks-labs"
   }]
-  users = [{
+  users               = [{
     name     = "quarks-labs",
     password = "quarks-labs@2057"
   }]
-  settings = {
+  settings            = {
     tier      = "db-f1-micro"
     disk_size = "20"
     disk_type = "PD_SSD"
@@ -33,21 +41,8 @@ locals {
       }]
     }
   }
-}
-
-module "database_instance" {
-  source              = "../.."
-  project             = local.project
-  region              = local.region
-  name                = local.name
-  database_version    = local.database_version
-  databases           = local.databases
-  users               = local.users
-  settings            = local.settings
-  deletion_protection = local.deletion_protection
+  deletion_protection = false
 } 
-
-
 
 ```
 
