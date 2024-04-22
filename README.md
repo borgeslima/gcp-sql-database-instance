@@ -7,6 +7,7 @@ Terraform module which creates SQL INSTANCE resources on GCP.
 
 ```hcl
 
+
 locals {
   name                   = "quarks-labs"
   project                = "quarks-labs"
@@ -42,8 +43,6 @@ module "database_instance" {
   }
   deletion_protection = false
 } 
-
-
 
 ```
 
