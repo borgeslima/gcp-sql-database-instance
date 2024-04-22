@@ -1,3 +1,3 @@
-output "instance_name" {
+output "instance" {
   value = google_sql_database.this
 }
