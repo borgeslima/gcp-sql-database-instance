@@ -26,12 +26,13 @@ module "database_instance" {
   }]
   users = [{
     name     = "quarks",
-    password = "quarks@2057"
+    password = "zamp@2057"
   }]
   settings = {
     disk_size = "20"
     tier      = "db-f1-micro"
     disk_type = "PD_SSD"
+    edition = "ENTERPRISE_PLUS"
 
     ip_configuration = {
       ipv4_enabled = true
@@ -42,7 +43,7 @@ module "database_instance" {
     }
 
     data_cache_config = {
-      data_cache_enabled = false
+      data_cache_enabled = true
     }
 
     backup_configuration = {
