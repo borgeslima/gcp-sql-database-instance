@@ -31,12 +31,12 @@ module "database_instance" {
   }
 
   databases = [{
-    name = "zamp-pocs"
+    name = "quarks-pocs"
   }]
 
   users = [{
-    name     = "zamp",
-    password = "zamp@2057"
+    name     = "quarks-pocs",
+    password = "quarks-pocs@2057"
   }]
 
   settings = {
